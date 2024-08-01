@@ -1,0 +1,108 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Castleman Disease Page with Multiple References</title>
+        <style>
+            body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; margin: 0; }
+            .target-sentence { 
+                background-color: #f0f0f0; 
+                padding: 5px; 
+                cursor: pointer;
+                display: inline-block;
+            }
+            .target-sentence:hover { background-color: #e0e0e0; }
+            .reference { 
+                display: none; 
+                padding: 10px;
+                background-color: #f9f9f9;
+                border-left: 5px solid #007bff;
+                margin: 10px 0;
+            }
+            @media (min-width: 768px) {
+                #content { display: flex; }
+                #chapter { width: 50%; padding-right: 20px; }
+                #references-container { 
+                    width: 45%; 
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    max-height: 90vh;
+                    overflow-y: auto;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div id="content">
+            <div id="chapter">
+                <h1>Castleman Disease</h1>
+                
+Castleman Diseaseの分類
+Castleman disease (CD)は、特徴的な病理組織学的所見を共有する、少なくとも4つの疾患群です[r:1]。CDには、限局性CD (UCD)と多中心性CD (MCD)があり、後者はさらに特発性MCD (iMCD)、ヒトヘルペスウイルス8 (HHV8)関連MCD (HHV8-MCD)、多発性神経障害、臓器腫大、内分泌障害、単クローン性形質細胞疾患、皮膚変化 (POEMS)関連MCD (POEMS-MCD)に分類されます[r:1]。
+限局性CD (UCD)
+UCDは最も一般的なタイプで、患者の約75％を占めます[r:12]。UCDは、リンパ組織の良性限局性過形成であり、病理組織学的には、硝子血管型と形質細胞型に分けられます[r:12]。硝子血管型は、UCDの約75％を占め、退縮性胚中心、顕著な濾胞樹状細胞、硝子化血管を特徴とします[r:12,15]。形質細胞型は、間質に形質細胞のシート状浸潤を特徴とします[r:12]。<span class="target-sentence" onclick="toggleReference(0)">UCDは通常、外科的切除により治癒します[r:12]。</span><span id="reference-insertion-point-0"></span>
+多中心性CD (MCD)
+<span class="target-sentence" onclick="toggleReference(1)">MCDは、全身性のリンパ節腫脎、炎症性症状、臓器機能障害を特徴とする、潜在的に生命を脅かす可能性のある全身性疾患です[r:4]。</span><span id="reference-insertion-point-1"></span>MCDは、HHV8関連MCD、特発性MCD、POEMS症候群関連MCDの3つのタイプに分類されます[r:1,12]。
+
+            </div>
+            <div id="references-container">
+                <div id="reference-0" class="reference"><p><span style="background-color: #6ece58;">Unicentric Castleman disease (UCD) is a rare lymphoproliferative disorder that manifests typically as proliferation of a single lymph node or region of lymph nodes.</span> <span style="background-color: #2e6e8e;">Histologically, hyaline vascular variant is found in a majority of UCDs.</span> <span style="background-color: #7ad151;">UCD commonly presents in younger patient populations.</span> <span style="background-color: #1fa188;">Patients with UCD may be asymptomatic or present with symptoms related to mass effects on surrounding structures.</span> <span style="background-color: #440154;">It is difficult to achieve a definitive diagnosis by imaging alone.</span> <span style="background-color: #472a7a;">Histologic examination of the lesion remains the gold standard for diagnosis.</span> <span style="background-color: #fde725;">Complete surgical resection is the best primary treatment modality for UCD resulting in excellent long-term survival and low recurrence rates..</span></p></div><div id="reference-1" class="reference"><p><span style="background-color: #297b8e;">BACKGROUND: Castleman disease (CD) encompasses a spectrum of rare disorders with characteristic histopathological features.</span> <span style="background-color: #481467;">Unicentric CD (UCD) is a benign, local hyperplasia of lymphoid tissue that is usually curable.</span> <span style="background-color: #fde725;">Multicentric CD (MCD) manifests as a potentially life-threatening systemic disease with complex symptomatology which is mostly due to an overproduction of interleukin-6 (IL-6) or dysregulation of IL-6-related signaling pathways.</span> <span style="background-color: #28ae80;">From a therapeutic perspective, it is important to distinguish idiopathic MCD (iMCD) from those cases that are associated with the human herpesvirus-8 (HHV-8 + MCD).</span> <span style="background-color: #25858e;">SUMMARY: During recent years, it has become increasingly clear that even HHV-8-negative MCD is not a homogeneous entity and that there are clinically distinct variants.</span> <span style="background-color: #440154;">International consensus guidelines for diagnosis and treatment have been developed for iMCD and UCD.</span> <span style="background-color: #453781;">KEY MESSAGES: We herein summarize recent advances in diagnosis, treatment, and novel insights into the pathogenesis of this disease..</span></p></div>
+            </div>
+        </div>
+        <script>
+            let activeReference = null;
+
+            function toggleReference(index) {
+                const referenceElement = document.getElementById(`reference-${index}`);
+                const insertionPoint = document.getElementById(`reference-insertion-point-${index}`);
+                const referencesContainer = document.getElementById('references-container');
+
+                if (window.innerWidth >= 768) {
+                    if (activeReference !== null && activeReference !== index) {
+                        document.getElementById(`reference-${activeReference}`).style.display = 'none';
+                    }
+                    referenceElement.style.display = referenceElement.style.display === 'none' ? 'block' : 'none';
+                    activeReference = referenceElement.style.display === 'none' ? null : index;
+                } else {
+                    if (activeReference !== null) {
+                        const activeElement = document.getElementById(`reference-${activeReference}`);
+                        activeElement.style.display = 'none';
+                        if (activeReference !== index) {
+                            setTimeout(() => {
+                                referenceElement.style.display = 'block';
+                                insertionPoint.appendChild(referenceElement);
+                                activeReference = index;
+                            }, 300); // Wait for the hiding animation to complete
+                        } else {
+                            activeReference = null;
+                        }
+                    } else {
+                        referenceElement.style.display = 'block';
+                        insertionPoint.appendChild(referenceElement);
+                        activeReference = index;
+                    }
+                }
+            }
+
+            function adjustLayout() {
+                const referencesContainer = document.getElementById('references-container');
+                if (window.innerWidth >= 768) {
+                    document.querySelectorAll('.reference').forEach(ref => {
+                        referencesContainer.appendChild(ref);
+                    });
+                } else if (activeReference !== null) {
+                    const insertionPoint = document.getElementById(`reference-insertion-point-${activeReference}`);
+                    const referenceElement = document.getElementById(`reference-${activeReference}`);
+                    insertionPoint.appendChild(referenceElement);
+                }
+            }
+
+            window.addEventListener('resize', adjustLayout);
+            adjustLayout(); // Call once on load
+        </script>
+    </body>
+    </html>
+    
